@@ -2824,6 +2824,14 @@ PluginInsert::set_state(const XMLNode& node, int version)
 		}
 	}
 
+	if (version < 7002 && !_custom_cfg /* && !strict_io ()*/ && plugin()->get_info ()->type == ARDOUR::VST3) {
+		if (_configured_in != plugin()->get_info()->n_inputs * _plugins.size () ||
+		    _configured_out != plugin()->get_info()->n_outputs * _plugins.size ()) {
+			/* do not add VST busses which were not previously available */
+			_custom_cfg = true;
+		}
+	}
+
 	if (in_maps == out_maps && out_maps >0 && out_maps == get_count()) {
 		_maps_from_state = true;
 	}
