@@ -2448,6 +2448,7 @@ LV2Plugin::describe_io_port (ARDOUR::DataType dt, bool input, uint32_t id) const
 		if (lilv_nodes_size (grouplabel) > 0) {
 			const LilvNode* grpname = lilv_nodes_get_first (grouplabel);
 			iod.group_name = lilv_node_as_string (grpname);
+			// TODO set iod.bus_number (nth group)
 		}
 		lilv_nodes_free (grouplabel);
 
