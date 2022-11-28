@@ -207,7 +207,7 @@ PluginSetupDialog::toggle_fan_out ()
 }
 
 std::string
-PluginSetupDialog::preset_label (uint32_t n_audio) const
+PluginSetupDialog::preset_label (uint32_t n_audio)
 {
 		std::string rv;
 		switch (n_audio) {

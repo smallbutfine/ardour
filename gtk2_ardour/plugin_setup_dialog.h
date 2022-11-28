@@ -34,6 +34,8 @@ public:
 
 	bool fan_out () const { return _fan_out.get_active () && _fan_out.get_sensitive (); }
 
+	static std::string preset_label (uint32_t);
+
 private:
 	void setup_output_presets ();
 	void update_sensitivity (uint32_t);
@@ -42,8 +44,6 @@ private:
 	void select_output_preset (uint32_t n_audio);
 	void apply_mapping ();
 	void toggle_fan_out ();
-
-	std::string preset_label (uint32_t) const;
 
 	boost::shared_ptr<ARDOUR::Route> _route;
 	boost::shared_ptr<ARDOUR::PluginInsert> _pi;
